@@ -21,13 +21,6 @@ Permite generar un reporte con la lista completa de asistentes de un evento en f
     1. Capturar tu ubicación actual con el GPS del teléfono.
     2. Abrir Google Maps para seleccionar y copiar las coordenadas de un lugar específico.
 - Esta ubicación se usa para que los invitados puedan ver el mapa.
-![WhatsApp Image 2025-12-05 at 10 23 05 AM (1)](https://github.com/user-attachments/assets/80e3cd37-472d-4c78-b051-ea15cddc15ad)
-![WhatsApp Image 2025-12-05 at 10 23 05 AM (3)](https://github.com/user-attachments/assets/4835fc04-1424-42e2-bf2b-2a4c61592af0)
-![WhatsApp Image 2025-12-05 at 10 23 05 AM (2)](https://github.com/user-attachments/assets/e6746239-d2bc-48f8-ab86-684794014105)
-![WhatsApp Image 2025-12-05 at 10 23 05 AM](https://github.com/user-attachments/assets/89aadbbe-dfbb-42f0-a041-d84bf322311d)
-
-
-
 
 ## Cómo usar el proyecto
 
