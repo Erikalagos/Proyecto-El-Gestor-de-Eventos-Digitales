@@ -22,8 +22,27 @@ Permite generar un reporte con la lista completa de asistentes de un evento en f
     2. Abrir Google Maps para seleccionar y copiar las coordenadas de un lugar específico.
 - Esta ubicación se usa para que los invitados puedan ver el mapa.
 
+
+💡 Tecnologías utilizadas
+
+Node.js
+Express.js
+IONIC/ANGULAR
+JavaScript
+SQLSERVER
+HTML/CSS/JS para el frontend
+Librerías para generación de PDF y QR
+
 ## Cómo usar el proyecto
 
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/Erikalagos/Proyecto-El-Gestor-de-Eventos-Digitales.git
+
+
+
+
+
+📬 Contacto
+Cualquier duda o sugerencia puedes contactar a: Erika Lagos
+GitHub +50489688704
