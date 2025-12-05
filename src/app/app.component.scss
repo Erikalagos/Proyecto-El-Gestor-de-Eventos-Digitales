@@ -1,0 +1,63 @@
+.menu-content {
+  --background: var(--ion-color-primary); /* Fondo Navy */
+}
+
+.menu-header {
+  padding: 40px 20px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+
+  .avatar-container {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    padding: 5px;
+    border: 3px solid var(--ion-color-secondary); /* Borde Dorado */
+    
+    img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+  }
+
+  h2 { color: white; font-weight: 700; margin: 5px 0; letter-spacing: 1px; }
+  p { color: var(--ion-color-secondary); margin: 0; font-size: 12px; text-transform: uppercase; }
+}
+
+.menu-list {
+  padding-top: 20px;
+  background: transparent;
+
+  ion-item {
+    --background: transparent;
+    --color: #8a9499; /* Gris suave inactivo */
+    margin-bottom: 5px;
+    font-weight: 500;
+
+    ion-icon { font-size: 22px; margin-right: 15px; }
+
+    /* ESTILO CUANDO ESTÁS EN ESA PÁGINA */
+    &.selected-item {
+      --color: white;
+      position: relative;
+      
+      ion-icon { color: var(--ion-color-secondary); } /* Icono Dorado */
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10%;
+        bottom: 10%;
+        width: 4px;
+        background: var(--ion-color-secondary);
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+}
+
+.menu-footer {
+  text-align: center;
+  padding: 20px;
+  p { color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 2px; }
+}

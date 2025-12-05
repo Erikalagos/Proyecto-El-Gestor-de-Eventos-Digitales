@@ -1,0 +1,7 @@
+{
+  "name": "Asistentes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

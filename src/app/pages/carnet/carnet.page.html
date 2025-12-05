@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: transparent;">
+    <ion-buttons slot="end">
+      
+      <ion-button (click)="descargarCarnet()">
+        <ion-icon name="download" style="font-size: 30px; color: white;"></ion-icon>
+      </ion-button>
+      
+      <ion-button (click)="cerrar()">
+        <ion-icon name="close-circle" style="font-size: 30px; color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo-oscuro">
+  
+  <div class="contenedor-carnet">
+    <div class="agujero"></div>
+
+    <div class="carnet-header">
+      <h2>EVENTO</h2>
+      <p>UTH 2025</p>
+    </div>
+
+    <div class="carnet-body">
+      <div class="marco-foto">
+        <img [src]="asistente?.fotoPerfilDataUrl || 'assets/icon/favicon.png'" />
+      </div>
+      
+      <h1 class="nombre">{{ asistente?.nombre }}</h1>
+      <p class="email">{{ asistente?.email }}</p>
+      
+      <div class="rol-badge">
+        ASISTENTE VERIFICADO
+      </div>
+
+      <div style="margin-top: 20px; background: white; padding: 10px; display: inline-block; border-radius: 8px;">
+        <qrcode 
+          [qrdata]="qrData" 
+          [width]="120" 
+          [errorCorrectionLevel]="'M'">
+        </qrcode>
+      </div>
+
+      <p style="font-size: 10px; letter-spacing: 2px; margin-top: 10px; opacity: 0.8;">
+        ID ÚNICO: {{ asistente?.id }}
+      </p>
+
+    </div>
+
+    <div class="carnet-footer">
+      <p>Acceso Autorizado</p>
+    </div>
+  </div>
+
+</ion-content>

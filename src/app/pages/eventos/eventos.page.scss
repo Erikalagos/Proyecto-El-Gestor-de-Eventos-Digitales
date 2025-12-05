@@ -1,0 +1,68 @@
+.evento-card {
+  background: white;
+  border-radius: 16px;
+  // margin-bottom: 20px;  <--- QUITA O COMENTA ESTA LÍNEA SI LA TIENES
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  width: 100%; /* Asegura que ocupe todo el ancho del item */
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.card-left {
+  background: var(--ion-color-primary);
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--ion-color-secondary); /* Letras doradas sobre fondo oscuro */
+  
+  .dia {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .mes {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+  }
+}
+
+.card-right {
+  padding: 20px;
+  flex: 1;
+  position: relative;
+
+  h2 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .lugar {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .arrow-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #ddd;
+  }
+}

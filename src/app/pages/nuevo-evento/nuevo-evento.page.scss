@@ -1,0 +1,116 @@
+ion-content {
+  --background: #f4f5f8;
+}
+
+.form-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-top: 20px;
+}
+
+.header-icon {
+  text-align: center;
+  margin-bottom: 30px;
+  ion-icon {
+    font-size: 60px;
+    color: var(--ion-color-secondary);
+    background: rgba(201,163,70, 0.1);
+    padding: 20px;
+    border-radius: 50%;
+  }
+}
+
+.input-group {
+  margin-bottom: 25px;
+
+  ion-label {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+  }
+
+  ion-input {
+    --background: #f9f9f9;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #333;
+    --color: #333;
+    --placeholder-color: #ccc;
+  }
+}
+
+.date-group {
+  .date-display {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.btn-gold {
+  margin-top: 40px;
+  --background: var(--ion-color-primary);
+  --color: white;
+  --border-radius: 12px;
+  height: 55px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(15, 32, 39, 0.3);
+}
+
+/* --- ESTILOS GPS MODIFICADOS --- */
+
+.input-group-small {
+    margin-bottom: 10px; 
+    
+    ion-label {
+        margin-bottom: 5px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    
+    .input-coordenada {
+        --background: #f9f9f9;
+        border: 1px solid #eee; 
+        border-radius: 8px;
+        --padding-start: 12px;
+        --padding-end: 40px; /* Espacio para el botón de borrar */
+        --padding-top: 10px;
+        --padding-bottom: 10px;
+        font-size: 14px;
+        color: var(--ion-color-primary);
+        font-weight: 500;
+    }
+    
+    .clear-button {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 100%;
+        width: 40px;
+        font-size: 20px;
+        z-index: 10;
+        
+        ion-icon {
+            color: #ccc;
+        }
+    }
+}
+
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }

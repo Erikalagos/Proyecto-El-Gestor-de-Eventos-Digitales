@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" style="padding-top: 10px; padding-bottom: 10px;">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-weight: 300; letter-spacing: 1px;">
+      MIS <b style="font-weight: 900; color: var(--ion-color-secondary);">EVENTOS</b>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="--background: #f4f5f8;">
+  
+  <div style="margin-bottom: 20px;">
+    <h1 style="font-size: 28px; font-weight: 800; color: #333; margin-bottom: 5px;">Bienvenido</h1>
+    <p style="color: #888; margin-top: 0;">Gestiona tus accesos exclusivos</p>
+  </div>
+
+  <ion-list style="background: transparent; padding: 0;">
+    
+    <ion-item-sliding *ngFor="let ev of eventos" style="margin-bottom: 20px; border-radius: 16px; overflow: visible;">
+
+      <ion-item lines="none" style="--background: transparent; --padding-start: 0; --inner-padding-end: 0;">
+        
+        <div class="evento-card" [routerLink]="['/lista-asistentes', ev.id]" style="margin-bottom: 0; width: 100%;">
+          
+          <!-- LADO IZQUIERDO: FECHA -->
+          <div class="card-left">
+            <span class="dia">{{ ev.fecha | date:'dd' }}</span>
+            <span class="mes">{{ ev.fecha | date:'MMM' | uppercase }}</span>
+          </div>
+
+          <!-- LADO DERECHO: DETALLES Y MAPA -->
+          <div class="card-right">
+            <h2>{{ ev.nombre }}</h2>
+            
+            <p class="lugar" style="margin-bottom: 5px;">
+              <ion-icon name="location-sharp" color="secondary"></ion-icon> 
+              {{ ev.lugar }}
+            </p>
+            
+            <!-- NUEVO BLOQUE DE MAPA: SOLO se muestra si latitud existe -->
+            <div *ngIf="ev.latitud" style="margin-top: 8px;">
+              <a [href]="'https://www.google.com/maps/search/?api=1&query=' + ev.latitud + ',' + ev.longitud" 
+                 target="_blank" 
+                 (click)="$event.stopPropagation()"
+                 style="text-decoration: none; font-size: 13px; color: var(--ion-color-primary); font-weight: bold; background: #e0e0e0; padding: 5px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 5px;">
+                 <ion-icon name="map"></ion-icon> Ver Mapa
+              </a>
+            </div>
+            <!-- FIN BLOQUE MAPA -->
+            
+            <div class="arrow-icon">
+              <ion-icon name="chevron-forward-circle-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+        </ion-item>
+
+      <ion-item-options side="end">
+        
+        <ion-item-option color="secondary" (click)="editar(ev)">
+          <ion-icon slot="icon-only" name="pencil" style="color: white;"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option color="danger" (click)="confirmarBorrado(ev)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" routerLink="/nuevo-evento" style="box-shadow: 0 4px 15px rgba(201,163,70, 0.5);">
+      <ion-icon name="add" style="color: white; font-size: 24px;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

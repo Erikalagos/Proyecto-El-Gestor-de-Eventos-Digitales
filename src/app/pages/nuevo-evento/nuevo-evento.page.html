@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: transparent;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/eventos" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: var(--ion-color-primary); font-weight: 800;">Agendar Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="form-card">
+    
+    <div class="header-icon">
+      <ion-icon name="calendar-number"></ion-icon>
+    </div>
+
+    <!-- Título del Evento -->
+    <div class="input-group">
+      <ion-label position="stacked">Título del Evento</ion-label>
+      <ion-input [(ngModel)]="nombre" placeholder="Ej. Cena Navideña"></ion-input>
+    </div>
+
+    <!-- Ubicación / Lugar (Texto) -->
+    <div class="input-group">
+      <ion-label position="stacked">Ubicación / Lugar</ion-label>
+      <ion-input [(ngModel)]="lugar" placeholder="Ej. Club Social"></ion-input>
+    </div>
+
+    <!-- SECCIÓN GPS CON SELECTOR DE MAPA (COPIAR/PEGAR) -->
+    <div class="gps-section" style="margin-bottom: 25px;">
+      <ion-label position="stacked" style="color: #888; font-size: 12px; font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 8px;">COORDENADAS DE EVENTO</ion-label>
+      
+      <!-- INPUT ÚNICO para Latitud y Longitud combinadas (donde pegarás) -->
+      <div class="input-group-small" style="margin-top: 5px; position: relative;">
+          <ion-input 
+            [(ngModel)]="coordenadaString" 
+            placeholder="Pegue aquí la coordenada (Ej: 14.07, -87.19)"
+            class="input-coordenada">
+          </ion-input>
+          
+          <!-- Botón de Limpiar (X) -->
+          <ion-button 
+            *ngIf="coordenadaString"
+            size="small" 
+            fill="clear" 
+            color="danger" 
+            (click)="limpiarUbicacion()"
+            class="clear-button">
+              <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+          </ion-button>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN -->
+      <div style="display: flex; gap: 10px; margin-top: 15px;">
+        
+        <!-- Botón 1: CAPTURAR GPS ACTUAL -->
+        <ion-button 
+          (click)="obtenerUbicacion()" 
+          expand="block" 
+          fill="outline" 
+          color="secondary"
+          [disabled]="cargandoUbicacion"
+          style="--padding-start: 10px; --padding-end: 10px; flex: 1;">
+          <ion-icon slot="start" [name]="cargandoUbicacion ? 'refresh' : 'locate-outline'" [class.spin]="cargandoUbicacion"></ion-icon>
+          {{ cargandoUbicacion ? 'Buscando...' : 'Mi Posición Actual' }}
+        </ion-button>
+
+        <!-- Botón 2: ABRIR MAPAS (ESTE INICIA EL FLUJO DE SELECCIÓN) -->
+        <ion-button 
+          (click)="abrirMapasParaSeleccion()" 
+          expand="block" 
+          color="primary"
+          style="--padding-start: 10px; --padding-end: 10px; flex: 1;">
+          <ion-icon slot="start" name="map"></ion-icon>
+          Seleccionar en Mapa
+        </ion-button>
+      </div>
+      
+      <!-- Indicador de que la coordenada está lista para guardar -->
+      <p *ngIf="coordenadaString" style="font-size: 11px; color: #4CAF50; margin-top: 15px; font-weight: 500;">
+          <ion-icon name="checkmark-circle" style="vertical-align: middle;"></ion-icon> Coordenada lista para guardar.
+      </p>
+
+    </div>
+    <!-- FIN SECCIÓN GPS -->
+    
+    <div class="input-group date-group">
+      <ion-label position="stacked">Fecha Programada</ion-label>
+      <div class="date-display">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      </div>
+    </div>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime" presentation="date" [(ngModel)]="fecha" color="secondary"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <ion-button (click)="guardar()" expand="block" class="btn-gold">
+      {{ modoEdicion ? 'ACTUALIZAR EVENTO' : 'CREAR EVENTO' }}
+    </ion-button>
+
+  </div>
+
+</ion-content>

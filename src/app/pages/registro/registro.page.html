@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: transparent;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="header-texto">
+    <h1>Nuevo<br><span style="color: var(--ion-color-secondary);">Invitado</span></h1>
+    <p>Completa la información para generar el acceso.</p>
+  </div>
+
+  <div class="formulario-container">
+    
+    <div class="input-group">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input [(ngModel)]="nombre" placeholder="Nombre Completo"></ion-input>
+    </div>
+
+    <div class="input-group">
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input type="email" [(ngModel)]="email" placeholder="Correo Electrónico"></ion-input>
+    </div>
+
+    <div class="foto-section" (click)="tomarFoto()">
+      <div class="foto-circle" [class.con-foto]="foto">
+        <img *ngIf="foto" [src]="foto" />
+        <ion-icon *ngIf="!foto" name="camera"></ion-icon>
+      </div>
+      <p>{{ foto ? 'Cambiar Foto' : 'Tomar Fotografía' }}</p>
+    </div>
+
+    <ion-button (click)="guardar()" expand="block" class="btn-premium">
+     {{ modoEdicion ? 'ACTUALIZAR' : 'REGISTRAR ACCESO' }}
+    </ion-button>
+
+  </div>
+</ion-content>

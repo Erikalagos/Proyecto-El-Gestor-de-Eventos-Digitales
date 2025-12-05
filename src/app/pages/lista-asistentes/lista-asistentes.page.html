@@ -1,0 +1,72 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/eventos" color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Invitados <span style="opacity: 0.5; font-size: 0.8em;">({{ asistentes.length }})</span></ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button (click)="descargarReporte()" color="secondary" [disabled]="asistentes.length === 0">
+        <ion-icon name="document-text-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+  
+  <div class="search-container">
+    <ion-searchbar 
+      placeholder="Buscar invitado..." 
+      (ionInput)="filtrar($event)"
+      mode="ios"
+      class="custom-search">
+    </ion-searchbar>
+  </div>
+</ion-header>
+
+<ion-content class="fondo-gris">
+
+  <div *ngIf="asistentes.length === 0" class="empty-state">
+    <div class="icon-circle">
+      <ion-icon name="people"></ion-icon>
+    </div>
+    <h3>Lista Vacía</h3>
+    <p>Agrega invitados para comenzar</p>
+  </div>
+
+  <div class="lista-container">
+    <ion-item-sliding *ngFor="let a of asistentesFiltrados" class="asistente-card">
+      
+      <ion-item lines="none" button (click)="verCarnet(a)" class="item-interno">
+        <ion-avatar slot="start" class="avatar-borde">
+          <img [src]="a.fotoPerfilDataUrl" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ a.nombre }}</h2>
+          <p>{{ a.email }}</p>
+        </ion-label>
+        <div class="qr-mini">
+          <ion-icon name="qr-code-outline"></ion-icon>
+        </div>
+      </ion-item>
+
+      <ion-item-options side="end">
+        
+        <ion-item-option color="secondary" (click)="editar(a)">
+          <ion-icon slot="icon-only" name="pencil"></ion-icon>
+        </ion-item-option>
+        
+        <ion-item-option color="danger" (click)="confirmarBorrado(a)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" [routerLink]="['/registro', eventoId]" style="box-shadow: 0 4px 15px rgba(201,163,70, 0.5);">
+      <ion-icon name="add" style="color: white;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
